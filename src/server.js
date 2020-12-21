@@ -1,13 +1,17 @@
 import express, {json} from 'express'
+import swaggerJSDoc from 'swagger-jsdoc';
 
 const app = express();
+const swaggerUI = require('swagger-ui-express');
 
 //Routes
 import IndexRoutes from './routes/index.routes'
 import TaskRoutes from './routes/tasks.routes'
+import {options} from './routes/tasks.routes'
 
 // Settings
 app.set('port', process.env.PORT || 3000); //Busca puerto predefinido, sino usa 3000
+var swaggerSpec = swaggerJSDoc(options);
 
 //Middlewares
 app.use(json());
@@ -21,5 +25,6 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/tasks', TaskRoutes);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 export default app;

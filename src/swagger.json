@@ -1,0 +1,14 @@
+{
+    "swaggerDefinition": {
+        "info": {
+            "title": "Todo API",
+            "description": "ApiRest With Integrated MongoDB Database",
+            "contact": {
+                "name": "Gaspar Varela",
+                "name2": "Nicolas Marsh"
+            },
+            "servers": ["http://localhost:3000", "http://localhost:3000/tasks"]
+        }
+    },
+    "apis": ["tasks.routes.js", "server.js", "index.js"]
+}
